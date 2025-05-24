@@ -1,6 +1,6 @@
 import React from 'react';
 
-const FilterSidebar = ({ onFilterChange }) => {
+const FilterSidebar = ({ onFilterChange = () => {} }) => {
   const handleChange = (e) => {
     onFilterChange(e.target.name, e.target.value);
   };
@@ -8,7 +8,7 @@ const FilterSidebar = ({ onFilterChange }) => {
   return (
     <div className="space-y-4 p-4 border-r border-gray-300">
       <h2 className="text-lg font-semibold">Filters</h2>
-      
+
       <div>
         <label htmlFor="priceRange" className="block text-sm font-medium text-gray-700">Price Range</label>
         <input
@@ -38,5 +38,9 @@ const FilterSidebar = ({ onFilterChange }) => {
     </div>
   );
 };
+
+/*FilterSidebar.defaultProps = {
+  onFilterChange: () => {},
+};*/
 
 export default FilterSidebar;

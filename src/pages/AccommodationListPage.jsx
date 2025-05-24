@@ -1,22 +1,34 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import FilterSidebar from '../components/FilterSidebar';
 import AccommodationCard from '../components/AccommodationCard';
-import { fetchVenues} from '../services/venues';
+import SearchBar from '../components/SearchBar'; 
+import { fetchVenues } from '../services/venues';
 
 function AccommodationListPage() {
-  const [venues, setVenues] = React.useState([]);
+  const [venues, setVenues] = useState([]);
 
-  React.useEffect(() => {
+  useEffect(() => {
     fetchVenues().then(setVenues);
   }, []);
 
+  const handleFilterChange = (name, value) => {
+    console.log('Filter:', name, value);
+  };
+
+  const handleSearch = (query) => {
+    console.log('Search query:', query);
+  };
+
   return (
-    <div className="flex">
-      <FilterSidebar />
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 p-4">
-        {venues.map(venue => (
-          <AccommodationCard key={venue.id} venue={venue} />
-        ))}
+    <div className="flex bg-[#F4F4F0] min-h-screen">
+      <FilterSidebar onFilterChange={handleFilterChange} />
+      <div className="flex-grow p-6">
+        <SearchBar onSearch={handleSearch} />
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-6">
+          {venues.map((venue) => (
+            <AccommodationCard key={venue.id} venue={venue} />
+          ))}
+        </div>
       </div>
     </div>
   );

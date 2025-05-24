@@ -7,12 +7,12 @@ module.exports = {
     theme: {
         extend: {
           colors: {
-            oceanBlue: '#1E90FF',    // Primary Blue (Ocean Blue)
-            skyBlue: '#87CEEB',      // Accent Blue (Sky Blue)
-            powderBlue: '#B0E0E6',   // Light Blue (Powder Blue)
-            navyBlue: '#000080',     // Dark Blue (Navy Blue)
-            turquoise: '#40E0D0',    // Soft Aqua (Turquoise)
-            steelBlue: '#4682B4',    // Muted Blue (Steel Blue)
+            forest: '#228B22',
+            moss: '#8A9A5B',
+            sky: '#00BFFF',
+            sun: '#FFD700',
+            stone: '#A9A9A9',
+            cream: '#F4F4F0',
           },
         },
       },

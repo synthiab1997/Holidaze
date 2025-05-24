@@ -19,3 +19,20 @@ export const updateUserProfile = async (data) => {
   const response = await api.put('/profiles/me', data);
   return response.data;
 };
+
+/*
+// 🔹 PROFILES
+export const fetchProfile = async (name) => {
+  const res = await api.get(`/profiles/${name}`);
+  return res.data.data;
+};
+
+export const fetchProfileBookings = async (name) => {
+  const res = await api.get(`/profiles/${name}/bookings`);
+  return res.data.data;
+};
+
+export const fetchProfileVenues = async (name) => {
+  const res = await api.get(`/profiles/${name}/venues`);
+  return res.data.data;
+}; */

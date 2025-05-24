@@ -1,3 +1,4 @@
+// src/pages/UserProfilePage.jsx
 import React, { useState, useEffect } from 'react';
 import { fetchUserProfile } from '../services/profiles';
 import BookingList from '../components/BookingList';
@@ -14,14 +15,14 @@ const UserProfilePage = () => {
     getUserProfile();
   }, []);
 
-  if (!user) return <div>Loading...</div>;
+  if (!user) return <div className="p-4">Loading...</div>;
 
   return (
-    <div className="p-4">
-      <h1 className="text-2xl font-bold mb-4">Profile</h1>
+    <div className="max-w-4xl mx-auto p-6 bg-white shadow rounded-lg mt-8">
+      <h1 className="text-2xl font-bold text-green-800 mb-4">Your Profile</h1>
       <div className="mb-4">
-        <h2 className="text-xl">{user.name}</h2>
-        <p>{user.email}</p>
+        <h2 className="text-xl font-semibold">{user.name}</h2>
+        <p className="text-slate-600">{user.email}</p>
       </div>
       <BookingList userId={user.id} />
     </div>

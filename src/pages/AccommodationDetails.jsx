@@ -10,23 +10,23 @@ function AccommodationDetails() {
     fetchVenueById(id).then(setVenue);
   }, [id]);
 
-  if (!venue) return <div>Loading...</div>;
+  if (!venue) return <div className="p-6">Loading...</div>;
 
   const imageUrl = venue.media?.[0] || "/images/default-venue.jpg";
 
   return (
-    <div className="container mx-auto p-4">
-      <h1 className="text-3xl font-bold mb-4">{venue.name}</h1>
+    <div className="max-w-4xl mx-auto p-6 bg-white mt-8 shadow-md rounded-md">
+      <h1 className="text-3xl font-bold text-green-800 mb-4">{venue.name}</h1>
       <img
         src={imageUrl}
         alt={venue.name}
-        className="w-full h-64 object-cover mb-4"
+        className="w-full h-64 object-cover rounded-md mb-4"
       />
-      <p className="mb-2">{venue.description}</p>
-      <p className="text-sm text-gray-600">
+      <p className="mb-2 text-gray-700">{venue.description}</p>
+      <p className="text-sm text-gray-500">
         Location: {venue.location?.city}, {venue.location?.country}
       </p>
-      <p className="text-sm text-gray-600">Price: ${venue.price} per night</p>
+      <p className="text-sm text-gray-500">Price: ${venue.price} per night</p>
     </div>
   );
 }

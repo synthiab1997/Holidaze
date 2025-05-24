@@ -1,4 +1,4 @@
-/* index.css */
+/* index.css *
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -70,4 +70,15 @@ button:focus-visible {
   button {
     background-color: #f9f9f9;
   }
+}*/
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  @apply bg-cream text-slate-800 font-sans;
+}
+
+a {
+  @apply text-forest hover:text-moss transition-colors;
 }

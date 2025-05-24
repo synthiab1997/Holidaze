@@ -1,5 +1,4 @@
-
-import { API_KEY } from '../constants/api';
+import { API_KEY } from './constants';
 
 export function getHeaders(authRequired = false) {
   const headers = {

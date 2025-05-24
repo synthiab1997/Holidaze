@@ -22,8 +22,8 @@ const EditVenuePage = () => {
   };
 
   return (
-    <div className="p-4">
-      <h1 className="text-2xl font-bold mb-4">Edit Venue</h1>
+    <div className="max-w-4xl mx-auto p-6 bg-white mt-8 shadow-md rounded-md">
+      <h1 className="text-2xl font-bold text-green-800 mb-4">Edit Venue</h1>
       {venue && <VenueForm initialData={venue} onSubmit={handleUpdate} />}
     </div>
   );

@@ -1,5 +1,5 @@
-import { API_BASE } from '../constants/api';
-import { getHeaders } from '../utils/headers';
+import { API_BASE } from '../services/constants';
+import { getHeaders } from '../services/headers';
 
 const VENUES_ENDPOINT = `${API_BASE}/venues`;
 
@@ -56,3 +56,15 @@ export const fetchUserVenues = async () => {
   const data = await response.json();
   return data.data;
 };
+
+
+/*// 🔹 VENUES
+export const fetchVenues = async () => {
+  const res = await api.get('/venues');
+  return res.data.data;
+};
+
+export const fetchVenueDetails = async (id) => {
+  const res = await api.get(`/venues/${id}`);
+  return res.data.data;
+}; */

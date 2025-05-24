@@ -1,5 +1,5 @@
 export const API_KEY = '4bd72ed3-6ff2-4433-9cc9-f9695c6ed25d';
-export const API_BASE = 'https://v2.api.noroff.dev';
+export const API_BASE = 'https://v2.api.noroff.dev/holidaze';
 
 
 // 🔐 Authentication

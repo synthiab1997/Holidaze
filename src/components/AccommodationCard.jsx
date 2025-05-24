@@ -6,7 +6,7 @@ function AccommodationCard({ venue }) {
     <div className="bg-white rounded-2xl shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300">
       <Link to={`/venues/${venue.id}`}>
         <img
-          src={venue.media?.[0] || "/bilderboken-rlwE8f8anOc-unsplash.jpg"}
+          src={venue.media?.[0] || "/public/bilderboken-rlwE8f8anOc-unsplash.jpg"}
           alt={venue.name}
           className="w-full h-48 object-cover"
         />
