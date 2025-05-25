@@ -1,12 +1,55 @@
-# React + Vite
+# 🌍 Holidaze – Venue Booking Platform
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Holidaze is a full-stack venue booking web application where users can explore, book, and manage accommodations, while venue managers can list and manage their properties.
 
-Currently, two official plugins are available:
+## 🚀 Live Site
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+🔗 [View Deployed App on Netlify](https://your-holidaze-site.netlify.app)
 
-## Expanding the ESLint configuration
+> ⚠️ **Note:** The deployed version currently has a styling/configuration issue related to Tailwind CSS. The core functionality and routing are in place, and the issue is being actively resolved.
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+---
+
+## 📦 Tech Stack
+
+- **Frontend:** React (Vite)
+- **Styling:** Tailwind CSS
+- **Routing:** React Router DOM
+- **API:** Noroff Holidaze API (v2)
+- **Auth:** Noroff API - Register/Login endpoints
+- **Deployment:** Netlify
+
+---
+
+## ✨ Features
+
+### Users (Guests)
+- Browse and search available venues
+- View accommodation details
+- Book venues by date and number of guests
+- Create a user account (with Noroff student email)
+- View profile and bookings
+
+### Venue Managers
+- Register as a Venue Manager
+- Add/edit/delete venues
+- View bookings for owned venues (Admin dashboard)
+
+---
+
+## 🛠️ Known Issues (To Be Fixed)
+
+- ❌ Tailwind CSS currently not applied due to PostCSS config issues
+- ❌ Some components may render without full styles or spacing
+- ✅ Routing, data fetching, and forms are functional
+- 🛠️ Fix planned for tomorrow: `postcss.config.js` and Tailwind reset
+
+---
+
+## 📁 Getting Started (Local)
+
+```bash
+git clone https://github.com/YOUR_USERNAME/holidaze.git
+cd holidaze
+npm install
+npm run dev
