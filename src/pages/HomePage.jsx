@@ -1,11 +1,10 @@
-// src/pages/HomePage.jsx
-import React from 'react';
-import { Link } from 'react-router-dom';
-import SearchBar from '../components/SearchBar';
-import Navbar from '../components/Navbar';
-import AccommodationCard from '../components/AccommodationCard';
-import Footer from '../components/Footer';
-import { fetchVenues } from '../services/venues';
+import React from "react";
+import { Link } from "react-router-dom";
+import SearchBar from "../components/SearchBar";
+import Navbar from "../components/Navbar";
+import AccommodationCard from "../components/AccommodationCard";
+import Footer from "../components/Footer";
+import { fetchVenues } from "../services/venues";
 
 function HomePage() {
   const [venues, setVenues] = React.useState([]);
@@ -14,20 +13,20 @@ function HomePage() {
     fetchVenues()
       .then(setVenues)
       .catch((err) => {
-        console.error('Failed to fetch venues:', err);
+        console.error("Failed to fetch venues:", err);
         setVenues([]);
       });
   }, []);
 
   const handleSearch = (query) => {
-    console.log('Search:', query);
-    // Add search filtering logic here if needed
+    console.log("Search:", query);
+    // Optional: implement search
   };
 
   return (
     <div className="min-h-screen bg-cream text-slate-800">
-      {/* Navbar */}
-      
+      <Navbar />
+
       {/* Hero */}
       <section className="relative">
         <img
@@ -38,13 +37,16 @@ function HomePage() {
         <div className="absolute top-1/2 left-1/2 text-center text-white transform -translate-x-1/2 -translate-y-1/2">
           <h1 className="text-4xl md:text-5xl font-bold mb-4">Find Your Next Adventure</h1>
           <p className="text-lg md:text-xl mb-6">Book unique stays with nature at your doorstep</p>
-          <Link to="/venues" className="bg-forest hover:bg-[#1e7c1e] text-white px-6 py-3 rounded text-sm font-semibold">
+          <Link
+            to="/venues"
+            className="bg-forest hover:bg-moss text-white px-6 py-3 rounded text-sm font-semibold transition"
+          >
             Browse Stays
           </Link>
         </div>
       </section>
 
-      {/* SearchBar */}
+      {/* Search */}
       <div className="relative z-10 -mt-12 mb-10">
         <SearchBar onSearch={handleSearch} />
       </div>
@@ -66,6 +68,3 @@ function HomePage() {
 }
 
 export default HomePage;
-
-
-

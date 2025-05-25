@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 
 const ProfileCard = ({ user }) => {
   if (!user) return null;
@@ -7,10 +7,20 @@ const ProfileCard = ({ user }) => {
     <div className="bg-white shadow-lg rounded-xl p-6 border border-stone text-slate-800 max-w-md mx-auto">
       <div className="text-center">
         <h2 className="text-2xl font-bold text-forest mb-2">{user.name}</h2>
-        <p className="text-sm text-stone mb-1">Email: <span className="text-slate-700">{user.email}</span></p>
-        <p className="text-sm text-stone mb-1">Joined: <span className="text-slate-700">{new Date(user.createdAt).toLocaleDateString()}</span></p>
+        <p className="text-sm text-stone mb-1">
+          Email: <span className="text-slate-700">{user.email}</span>
+        </p>
+        <p className="text-sm text-stone mb-1">
+          Joined:{" "}
+          <span className="text-slate-700">
+            {new Date(user.createdAt).toLocaleDateString()}
+          </span>
+        </p>
         <p className="text-sm text-stone">
-          Bookings: <span className="font-semibold text-forest">{user.bookings?.length ?? 0}</span>
+          Bookings:{" "}
+          <span className="font-semibold text-forest">
+            {user.bookings?.length ?? 0}
+          </span>
         </p>
       </div>
     </div>

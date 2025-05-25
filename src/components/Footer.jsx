@@ -1,9 +1,15 @@
-import React from 'react';
+import React from "react";
 
 function Footer() {
   return (
-    <footer className="bg-forest text-white text-center py-4 mt-16">
-      <p>&copy; {new Date().getFullYear()} Holidaze. All rights reserved.</p>
+    <footer className="bg-forest text-white py-6 mt-16">
+      <div className="container-section text-center text-sm">
+        <p>&copy; {new Date().getFullYear()} Holidaze. All rights reserved.</p>
+        <p className="mt-2">
+          Built with <span className="text-sun">passion</span> and{" "}
+          <span className="text-sky">Tailwind CSS</span>.
+        </p>
+      </div>
     </footer>
   );
 }

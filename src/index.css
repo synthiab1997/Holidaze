@@ -1,0 +1,49 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* 🌿 Base Styles */
+body {
+  @apply bg-cream text-slate-800 font-sans antialiased leading-relaxed;
+}
+
+a {
+  @apply text-forest hover:text-moss transition-colors underline-offset-2;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  @apply font-bold text-forest;
+}
+
+input, textarea, select {
+  @apply w-full px-4 py-2 border border-stone rounded-md focus:outline-none focus:ring-2 focus:ring-sky;
+}
+
+button {
+  @apply px-4 py-2 rounded-md font-medium transition-colors;
+}
+
+button:disabled {
+  @apply opacity-50 cursor-not-allowed;
+}
+
+/* 🎨 Reusable Components */
+.btn-primary {
+  @apply bg-forest text-white hover:bg-moss;
+}
+
+.btn-secondary {
+  @apply bg-stone text-white hover:bg-sky;
+}
+
+.card {
+  @apply bg-white rounded-lg shadow-md p-4 transition-transform hover:scale-[1.01];
+}
+
+.container-section {
+  @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+}
+
+.section-title {
+  @apply text-2xl md:text-3xl font-bold text-forest mb-4;
+}

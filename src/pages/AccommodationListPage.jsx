@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from 'react';
-import FilterSidebar from '../components/FilterSidebar';
-import AccommodationCard from '../components/AccommodationCard';
-import SearchBar from '../components/SearchBar'; 
-import { fetchVenues } from '../services/venues';
+import React, { useState, useEffect } from "react";
+import FilterSidebar from "../components/FilterSidebar";
+import AccommodationCard from "../components/AccommodationCard";
+import SearchBar from "../components/SearchBar";
+import { fetchVenues } from "../services/venues";
 
 function AccommodationListPage() {
   const [venues, setVenues] = useState([]);
@@ -12,15 +12,15 @@ function AccommodationListPage() {
   }, []);
 
   const handleFilterChange = (name, value) => {
-    console.log('Filter:', name, value);
+    console.log("Filter:", name, value);
   };
 
   const handleSearch = (query) => {
-    console.log('Search query:', query);
+    console.log("Search query:", query);
   };
 
   return (
-    <div className="flex bg-[#F4F4F0] min-h-screen">
+    <div className="flex bg-cream min-h-screen">
       <FilterSidebar onFilterChange={handleFilterChange} />
       <div className="flex-grow p-6">
         <SearchBar onSearch={handleSearch} />
