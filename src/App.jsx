@@ -12,9 +12,11 @@ import BookingConfirmationPage from "./pages/BookingConfirmationPage.jsx";
 import LoginPage from "./pages/LoginPage.jsx";
 import SignupPage from "./pages/SignupPage.jsx";
 import UserProfilePage from "./pages/UserProfilePage.jsx";
-import AdminDashboard from "./pages/AdminDashboardPage.jsx";
+import AdminDashboardPage from "./pages/AdminDashboardPage.jsx";
 import EditVenuePage from "./pages/EditVenuePage.jsx";
 import PageNotFound from "./pages/PageNotFound.jsx";
+
+import ProtectedRoute from "./components/ProtectedRoute.jsx";
 
 function App() {
   return (
@@ -29,10 +31,35 @@ function App() {
           <Route path="/booking-confirmation" element={<BookingConfirmationPage />} />
           <Route path="/login" element={<LoginPage />} />
           <Route path="/signup" element={<SignupPage />} />
-          <Route path="/profile" element={<UserProfilePage />} />
-          <Route path="/admin" element={<AdminDashboard />} />
-          <Route path="/edit-venue/:id" element={<EditVenuePage />} />
-          <Route path="*" element={<PageNotFound />} /> {/* ✅ Wildcard route */}
+
+          {/* ✅ Protected Routes */}
+          <Route
+            path="/profile"
+            element={
+              <ProtectedRoute>
+                <UserProfilePage />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/admin"
+            element={
+              <ProtectedRoute requireManager>
+                <AdminDashboardPage />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/edit-venue/:id"
+            element={
+              <ProtectedRoute requireManager>
+                <EditVenuePage />
+              </ProtectedRoute>
+            }
+          />
+
+          {/* Fallback */}
+          <Route path="*" element={<PageNotFound />} />
         </Routes>
       </main>
       <Footer />

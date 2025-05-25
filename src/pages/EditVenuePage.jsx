@@ -12,7 +12,6 @@ const EditVenuePage = () => {
       const data = await fetchVenueById(id);
       setVenue(data);
     };
-
     getVenue();
   }, [id]);
 

@@ -10,7 +10,7 @@ function AccommodationDetails() {
     fetchVenueById(id).then(setVenue);
   }, [id]);
 
-  if (!venue) return <div className="p-6">Loading...</div>;
+  if (!venue) return <div className="p-6">Loading venue details...</div>;
 
   const imageUrl = venue.media?.[0] || "/images/default-venue.jpg";
 

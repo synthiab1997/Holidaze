@@ -1,32 +1,64 @@
-import React, { useState, useEffect } from 'react';
-import { fetchUserVenues } from '../services/venues';
+import React, { useEffect, useState } from 'react';
+import { getProfile, fetchProfileVenues } from '../services/profiles';
+import { fetchVenueBookings } from '../services/bookings';
 
-const AdminDashboard = () => {
+export default function AdminDashboardPage() {
   const [venues, setVenues] = useState([]);
+  const [bookings, setBookings] = useState({});
+  const [error, setError] = useState('');
 
   useEffect(() => {
-    const getVenues = async () => {
-      const data = await fetchUserVenues();
-      setVenues(data);
+    const loadVenues = async () => {
+      try {
+        const user = JSON.parse(localStorage.getItem('user'));
+        const profile = await getProfile(user.name);
+        const myVenues = await fetchProfileVenues(profile.name);
+        setVenues(myVenues);
+
+        const bookingsMap = {};
+        for (const venue of myVenues) {
+          const venueBookings = await fetchVenueBookings(venue.id);
+          bookingsMap[venue.id] = venueBookings;
+        }
+        setBookings(bookingsMap);
+      } catch (err) {
+        setError('Failed to load venues or bookings.');
+      }
     };
 
-    getVenues();
+    loadVenues();
   }, []);
 
   return (
-    <div className="p-4">
-      <h1 className="text-2xl font-bold mb-4">Admin Dashboard</h1>
-      <div>
-        {venues.map((venue) => (
-          <div key={venue.id}>
-            <h2>{venue.name}</h2>
-            <p>{venue.description}</p>
-            <p>Price: ${venue.price}</p>
+    <div className="max-w-6xl mx-auto p-6 space-y-6">
+      <h1 className="text-3xl font-bold text-green-800">Venue Manager Dashboard</h1>
+
+      {error && <p className="text-red-600">{error}</p>}
+
+      {venues.length === 0 ? (
+        <p className="text-gray-600">You haven't created any venues yet.</p>
+      ) : (
+        venues.map((venue) => (
+          <div key={venue.id} className="bg-white p-6 shadow-md rounded-xl space-y-3">
+            <h2 className="text-2xl text-green-700 font-semibold">{venue.name}</h2>
+            <p className="text-sm text-gray-500">{venue.location?.address || 'No address provided'}</p>
+            <h3 className="font-semibold text-lg">Bookings:</h3>
+            {bookings[venue.id]?.length ? (
+              <ul className="space-y-2">
+                {bookings[venue.id].map((booking) => (
+                  <li key={booking.id} className="border p-3 rounded-md">
+                    <strong>Customer:</strong> {booking.customer?.name || 'Unknown'} <br />
+                    <strong>From:</strong> {new Date(booking.dateFrom).toLocaleDateString()} <br />
+                    <strong>To:</strong> {new Date(booking.dateTo).toLocaleDateString()}
+                  </li>
+                ))}
+              </ul>
+            ) : (
+              <p className="text-sm text-gray-500">No bookings yet.</p>
+            )}
           </div>
-        ))}
-      </div>
+        ))
+      )}
     </div>
   );
-};
-
-export default AdminDashboard;
+}
