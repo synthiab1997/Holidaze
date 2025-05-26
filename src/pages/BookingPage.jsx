@@ -1,13 +1,24 @@
 import React, { useState } from "react";
+import { useParams } from "react-router-dom";
 import BookingForm from "../components/BookingForm";
 import { createBooking } from "../services/bookings";
 
 const BookingPage = () => {
+  const { id: venueId } = useParams(); // Get venue ID from URL
   const [bookingDetails, setBookingDetails] = useState(null);
 
   const handleSubmit = async (details) => {
-    const booking = await createBooking(details);
-    setBookingDetails(booking);
+    const bookingPayload = {
+      ...details,
+      venueId,
+    };
+
+    try {
+      const booking = await createBooking(bookingPayload);
+      setBookingDetails(booking);
+    } catch (error) {
+      console.error("Booking failed:", error);
+    }
   };
 
   return (

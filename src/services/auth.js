@@ -12,20 +12,39 @@ export const loginUser = async (email, password) => {
     throw new Error(error.errors?.[0]?.message || 'Login failed.');
   }
 
-  return await response.json(); // includes accessToken, name, email, etc.
+  return await response.json();
 };
 
 export const registerUser = async ({ name, email, password, avatar = '', venueManager = false }) => {
+  const payload = {
+    name,
+    email,
+    password,
+    venueManager,
+  };
+
+  if (avatar) {
+    payload.avatar = {
+      url: avatar,
+      alt: `${name}'s avatar`
+    };
+  }
+
+  console.log("🔍 Registering with payload:", payload);
+
   const response = await fetch(API_AUTH_REGISTER, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ name, email, password, avatar, venueManager }),
+    body: JSON.stringify(payload),
   });
 
+  const data = await response.json();
+
   if (!response.ok) {
-    const error = await response.json();
-    throw new Error(error.errors?.[0]?.message || 'Registration failed.');
+    console.error("❌ Register error:", data);
+    throw new Error(data.errors?.[0]?.message || 'Registration failed.');
   }
 
-  return await response.json(); // includes id, name, email, etc.
+  return data;
 };
+

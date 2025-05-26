@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import { fetchVenueById } from "../services/venues";
 
 function AccommodationDetails() {
@@ -10,9 +10,11 @@ function AccommodationDetails() {
     fetchVenueById(id).then(setVenue);
   }, [id]);
 
-  if (!venue) return <div className="p-6 text-slate-600">Loading venue details...</div>;
+  if (!venue) {
+    return <div className="p-6 text-slate-600">Loading venue details...</div>;
+  }
 
-  const imageUrl = venue.media?.[0] || "/images/default-venue.jpg";
+  const imageUrl = venue.media?.[0]?.url || "/images/default-venue.jpg";
 
   return (
     <div className="max-w-4xl mx-auto p-6 mt-8 bg-white rounded-xl shadow-md border border-stone">
@@ -29,6 +31,13 @@ function AccommodationDetails() {
       <p className="text-sm text-forest font-semibold mt-1">
         Price: <span className="text-moss">{venue.price} NOK</span> per night
       </p>
+
+      <Link
+        to={`/booking/${venue.id}`}
+        className="inline-block mt-6 bg-sun text-forestDark px-6 py-2 rounded-md font-semibold hover:bg-yellow-400 transition"
+      >
+        Book This Venue
+      </Link>
     </div>
   );
 }

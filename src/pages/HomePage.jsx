@@ -20,7 +20,7 @@ function HomePage() {
 
   const handleSearch = (query) => {
     console.log("Search:", query);
-    // Optional: implement search
+    
   };
 
   return (
@@ -39,7 +39,7 @@ function HomePage() {
           <p className="text-lg md:text-xl mb-6">Book unique stays with nature at your doorstep</p>
           <Link
             to="/venues"
-            className="bg-forest hover:bg-moss text-white px-6 py-3 rounded text-sm font-semibold transition"
+            className="bg-forestDark hover:bg-forest text-white px-6 py-3 rounded text-sm font-semibold transition"
           >
             Browse Stays
           </Link>

@@ -1,6 +1,10 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { registerUser } from '../services/auth';
+import Navbar from '../components/Navbar';
+import Footer from '../components/Footer';
+
+
 
 export default function SignupPage() {
   const navigate = useNavigate();
@@ -27,92 +31,118 @@ export default function SignupPage() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError('');
-
+  
     if (!validateEmail(form.email)) {
       setError('Only @stud.noroff.no email addresses are allowed.');
       return;
     }
-
+  
     if (!isValidName(form.name)) {
       setError('Name can only use letters, numbers, and underscores.');
       return;
     }
-
+  
+    if (form.password.length < 8) {
+      setError('Password must be at least 8 characters long.');
+      return;
+    }
+  
+    if (form.avatar && !/^https?:\/\/.+\.(jpg|jpeg|png|webp|gif)$/i.test(form.avatar)) {
+      setError('Avatar must be a valid image URL.');
+      return;
+    }
+  
     try {
       const result = await registerUser(form);
-      if (!result.id) {
+  
+      if (!result.data || !result.data.name) {
         throw new Error(result.errors?.[0]?.message || 'Registration failed.');
       }
-      navigate('/login');
+  
+      localStorage.setItem('user', JSON.stringify(result.data));
+  
+      if (result.data.venueManager) {
+        navigate('/admin');
+      } else {
+        navigate('/profile');
+      }
     } catch (err) {
       setError(err.message || 'An error occurred during registration.');
     }
   };
+  
 
   return (
-    <div className="min-h-screen bg-[#F4F4F0] flex items-center justify-center p-4">
-      <form onSubmit={handleSubmit} className="bg-white p-6 rounded-lg shadow-md w-full max-w-md">
-        <h1 className="text-2xl font-bold text-green-800 mb-4 text-center">Create Your Account</h1>
+    <div className="min-h-screen bg-cream text-slate-800 flex flex-col">
+      <Navbar />
+      <main className="flex-grow flex items-center justify-center p-4">
+        
+        <form onSubmit={handleSubmit} className="bg-white p-6 rounded-xl shadow-md w-full max-w-md">
+          <h1 className="text-2xl font-bold text-forestDark mb-4 text-center">
+            Create Your Account
+          </h1>
 
-        <input
-          type="text"
-          name="name"
-          placeholder="Username (letters, numbers, or underscores)"
-          value={form.name}
-          onChange={handleChange}
-          className="w-full mb-3 px-4 py-2 border rounded-md focus:ring-2 focus:ring-green-600"
-          required
-        />
-
-        <input
-          type="email"
-          name="email"
-          placeholder="Email (must be @stud.noroff.no)"
-          value={form.email}
-          onChange={handleChange}
-          className="w-full mb-3 px-4 py-2 border rounded-md focus:ring-2 focus:ring-green-600"
-          required
-        />
-
-        <input
-          type="password"
-          name="password"
-          placeholder="Password"
-          value={form.password}
-          onChange={handleChange}
-          className="w-full mb-3 px-4 py-2 border rounded-md focus:ring-2 focus:ring-green-600"
-          required
-        />
-
-        <input
-          type="url"
-          name="avatar"
-          placeholder="Avatar URL (optional)"
-          value={form.avatar}
-          onChange={handleChange}
-          className="w-full mb-3 px-4 py-2 border rounded-md focus:ring-2 focus:ring-green-600"
-        />
-
-        <label className="flex items-center space-x-2 mb-4 text-sm">
           <input
-            type="checkbox"
-            name="venueManager"
-            checked={form.venueManager}
+            type="text"
+            name="name"
+            placeholder="Username (letters, numbers, or underscores)"
+            value={form.name}
             onChange={handleChange}
-            className="accent-green-600"
+            className="input-base mb-3"
+            required
           />
-          <span>Register as Venue Manager</span>
-        </label>
 
-        {error && <p className="text-red-600 mb-3">{error}</p>}
+          <input
+            type="email"
+            name="email"
+            placeholder="Email (must be @stud.noroff.no)"
+            value={form.email}
+            onChange={handleChange}
+            className="input-base mb-3"
+            required
+          />
 
-        <button
-          type="submit"
-          className="w-full bg-green-700 text-white py-2 rounded-md hover:bg-green-800"
-        >
-          Register
-        </button>
-      </form>
+          <input
+            type="password"
+            name="password"
+            placeholder="Password"
+            value={form.password}
+            onChange={handleChange}
+            className="input-base mb-3"
+            required
+          />
+
+          <input
+            type="url"
+            name="avatar"
+            placeholder="Avatar URL (optional)"
+            value={form.avatar}
+            onChange={handleChange}
+            className="input-base mb-3"
+          />
+
+          <label className="flex items-center space-x-2 mb-4 text-sm">
+            <input
+              type="checkbox"
+              name="venueManager"
+              checked={form.venueManager}
+              onChange={handleChange}
+              className="accent-forestDark"
+            />
+            <span>Register as Venue Manager</span>
+          </label>
+
+          {error && <p className="text-red-600 mb-3">{error}</p>}
+
+          <button
+            type="submit"
+            className="w-full bg-forestDark hover:bg-forest text-white py-2 rounded-md font-semibold transition"
+          >
+            Register
+          </button>
+        </form>
+      </main>
+      <Footer />
     </div>
   );
 }

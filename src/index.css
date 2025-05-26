@@ -12,7 +12,7 @@ a {
 }
 
 h1, h2, h3, h4, h5, h6 {
-  @apply font-bold text-forest;
+  @apply font-bold text-white;
 }
 
 input, textarea, select {
@@ -29,7 +29,7 @@ button:disabled {
 
 /* 🎨 Reusable Components */
 .btn-primary {
-  @apply bg-forest text-white hover:bg-moss;
+  @apply bg-forestDark text-white hover:bg-moss;
 }
 
 .btn-secondary {
@@ -46,4 +46,8 @@ button:disabled {
 
 .section-title {
   @apply text-2xl md:text-3xl font-bold text-forest mb-4;
+}
+
+.text-gold {
+  color: #c8ad10;
 }
