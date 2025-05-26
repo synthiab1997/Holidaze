@@ -12,10 +12,7 @@ function HomePage() {
   React.useEffect(() => {
     fetchVenues()
       .then(setVenues)
-      .catch((err) => {
-        console.error("Failed to fetch venues:", err);
-        setVenues([]);
-      });
+      .catch(() => setVenues([]));
   }, []);
 
   const handleSearch = (query) => {
@@ -23,18 +20,18 @@ function HomePage() {
   };
 
   return (
-    <div className="min-h-screen bg-cream text-slate-800">
+    <div className="min-h-screen bg-cream text-slate-800 flex flex-col">
       <Navbar />
 
-      {/* Hero */}
+      {/* Hero Section */}
       <section className="relative">
         <img
           src="/public/drew-dau-GEdoSfYHsPs-unsplash.jpg"
           alt="Scenic Vacation"
           className="w-full h-[500px] object-cover brightness-75"
         />
-        <div className="absolute top-1/2 left-1/2 text-center text-white transform -translate-x-1/2 -translate-y-1/2">
-          <h1 className="text-4xl md:text-5xl font-bold mb-4">
+        <div className="absolute top-1/2 left-1/2 w-full text-center text-white transform -translate-x-1/2 -translate-y-1/2 px-4">
+          <h1 className="text-4xl md:text-5xl font-bold mb-3">
             Find Your Next Adventure
           </h1>
           <p className="text-lg md:text-xl mb-6">
@@ -42,31 +39,32 @@ function HomePage() {
           </p>
           <Link
             to="/venues"
-            className="bg-forestDark hover:bg-forest text-white px-6 py-3 rounded text-sm font-semibold transition"
+            className="inline-block bg-forestDark text-white px-6 py-3 rounded-md font-semibold hover:bg-yellow-400 transition"
           >
             Browse Stays
           </Link>
         </div>
       </section>
 
-      {/* Search */}
-      <div className="relative z-10 -mt-12 mb-10">
-        <SearchBar onSearch={handleSearch} />
-      </div>
+      {/* Search & Venues */}
+      <main className="flex-grow">
+        <div className="container-section -mt-12 z-10 relative">
+          <SearchBar onSearch={handleSearch} />
+        </div>
 
-      {/* Venues */}
-      <div className="max-w-7xl mx-auto px-4 pb-16 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-        {venues.length > 0 ? (
-          venues.map((venue) => (
-            <AccommodationCard key={venue.id} venue={venue} />
-          ))
-        ) : (
-          <p className="text-center col-span-full text-slate-500">
-            No venues found.
-          </p>
-          
-        )}
-      </div>
+        <section className="container-section py-12">
+          <h2 className="section-title text-center mb-8">Popular Stays</h2>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {venues.length > 0 ? (
+              venues.map((venue) => (
+                <AccommodationCard key={venue.id} venue={venue} />
+              ))
+            ) : (
+              <p className="col-span-full text-center text-slate-500">No venues found.</p>
+            )}
+          </div>
+        </section>
+      </main>
 
       <Footer />
     </div>

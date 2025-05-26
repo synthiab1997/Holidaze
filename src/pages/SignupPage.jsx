@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { registerUser } from "../services/auth";
-
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 

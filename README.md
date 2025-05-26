@@ -1,58 +1,113 @@
 # 🌍 Holidaze – Venue Booking Platform
 
-Holidaze is a full-stack venue booking web application where users can explore, book, and manage accommodations, while venue managers can list and manage their properties.
+**Holidaze** is a responsive venue booking web application built using React and Tailwind CSS. It allows users to browse, book, and manage accommodations, while venue managers can register properties and oversee bookings.
 
-## 🚀 Live Site
+---
 
-🔗 [View Deployed App on Netlify](https://your-holidaze-site.netlify.app)
+## 🚀 Live Demo
 
-> ⚠️ **Note:** The deployed version currently has a styling/configuration issue related to Tailwind CSS. The core functionality and routing are in place, and the issue is being actively resolved.
+🔗 [View Deployed App on Netlify](https://your-actual-netlify-link.netlify.app)
 
 ---
 
 ## 📦 Tech Stack
 
-- **Frontend:** React (Vite)
+- **Frontend Framework:** React (with Vite)
 - **Styling:** Tailwind CSS
 - **Routing:** React Router DOM
+- **State Management:** Local state/hooks
 - **API:** Noroff Holidaze API (v2)
-- **Auth:** Noroff API - Register/Login endpoints
+- **Auth:** Noroff API – Register/Login with token-based auth
 - **Deployment:** Netlify
 
 ---
 
 ## ✨ Features
 
-### Users (Guests)
+### 👥 Guests (Customers)
+- 🔍 Browse and search available venues
+- 📆 View accommodation details with availability calendar
+- 📝 Book venues (select dates, number of guests)
+- 👤 Register and log in
+- 📄 View personal bookings
+- 🖼️ Update avatar/profile
 
-- Browse and search available venues
-- View accommodation details
-- Book venues by date and number of guests
-- Create a user account (with Noroff student email)
-- View profile and bookings
-
-### Venue Managers
-
-- Register as a Venue Manager
-- Add/edit/delete venues
-- View bookings for owned venues (Admin dashboard)
-
----
-
-## 🛠️ Known Issues (To Be Fixed)
-
-- ❌ Tailwind CSS currently not applied due to PostCSS config issues
-- ❌ Some components may render without full styles or spacing
-- ✅ Routing, data fetching, and forms are functional
-- 🛠️ Fix planned for tomorrow: `postcss.config.js` and Tailwind reset
+### 🧑‍💼 Venue Managers
+- 🛠️ Register as a venue manager
+- 🏠 Add, edit, and delete venues
+- 📅 View upcoming bookings for managed venues
+- 🖼️ Update avatar/profile
 
 ---
 
-## 📁 Getting Started (Local)
+## 🧪 Testing
+
+- ✅ All user stories tested manually
+- ✅ Validated HTML with [W3C Validator](https://validator.w3.org/)
+- ✅ Accessibility tested with [WAVE Tool](https://wave.webaim.org/)
+- ✅ Performance and SEO tested using Lighthouse
+
+---
+
+## 🛠️ Known Issues
+
+- ❌ Tailwind CSS may not render correctly on first build (PostCSS issue under review)
+- ✅ All routes, API requests, and form submissions are functional
+- 🛠️ Style rendering issue fix planned (check `postcss.config.js` and ensure Tailwind base import)
+
+---
+
+## 🖥️ Screenshots
+
+> *(Add screenshots of the following for visual confirmation)*
+
+- Home Page
+- Venue Details (with Calendar)
+- Booking Page
+- Admin Dashboard
+
+---
+
+## 📁 Folder Structure
+
+src
+/components # Reusable UI components
+/pages # Page-level React components
+/services # API interaction modules
+/hooks # Custom React hooks
+main.jsx # Entry point
+App.jsx # Main layout and router
+
+
+---
+
+## 🧭 Project Planning
+
+- 📌 [Kanban Board (Trello/GitHub Projects)](https://your-kanban-board-link)
+- 📅 [Gantt Chart (GitHub Roadmap/other)](https://your-gantt-chart-link)
+
+---
+
+## 🎨 Design & UI
+
+- 🎨 [Figma Style Guide](https://your-figma-style-guide-link)
+- 📱 [Figma Desktop & Mobile Designs](https://your-figma-design-prototype-link)
+
+---
+
+## 🧰 Getting Started (Local Setup)
 
 ```bash
+# Clone the repository
 git clone https://github.com/YOUR_USERNAME/holidaze.git
 cd holidaze
+
+# Install dependencies
 npm install
+
+# Start the dev server
 npm run dev
-```
+
+
+📝 License
+This project is for educational purposes only. Developed as part of the FED2 exam project brief at Noroff.

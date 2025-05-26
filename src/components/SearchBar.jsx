@@ -15,7 +15,7 @@ function SearchBar({ onSearch }) {
         />
         <button
           type="submit"
-          className="bg-forest text-white px-6 py-2 rounded-r-lg hover:bg-moss transition"
+          className="bg-forestDark text-white px-6 py-2 rounded-r-lg hover:bg-moss transition"
         >
           Search
         </button>

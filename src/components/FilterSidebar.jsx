@@ -1,20 +1,31 @@
-import React from "react";
+import React, { useState } from "react";
 
 const FilterSidebar = ({ onFilterChange = () => {} }) => {
-  const handleChange = (e) => {
-    onFilterChange(e.target.name, e.target.value);
+  const [price, setPrice] = useState(250);
+  const [guests, setGuests] = useState(2);
+
+  const handlePriceChange = (e) => {
+    const value = Number(e.target.value);
+    setPrice(value);
+    onFilterChange("priceRange", value);
+  };
+
+  const handleGuestChange = (e) => {
+    const value = Number(e.target.value);
+    setGuests(value);
+    onFilterChange("maxGuests", value);
   };
 
   return (
-    <aside className="w-full max-w-xs bg-white border-r border-stone p-6 shadow-sm space-y-6 hidden md:block">
-      <h2 className="text-xl font-bold text-forest">Filter Venues</h2>
+    <aside className="w-full sm:w-64 bg-white border border-stone p-6 rounded-lg shadow-md space-y-6">
+      <h2 className="text-xl font-bold text-forestDark">Filter Venues</h2>
 
       <div>
         <label
           htmlFor="priceRange"
-          className="block text-sm font-medium text-slate-700"
+          className="block text-sm font-medium text-slate-700 mb-1"
         >
-          Price Range
+          Price Range: ${price}
         </label>
         <input
           type="range"
@@ -23,7 +34,8 @@ const FilterSidebar = ({ onFilterChange = () => {} }) => {
           min="0"
           max="500"
           step="10"
-          onChange={handleChange}
+          value={price}
+          onChange={handlePriceChange}
           className="w-full accent-moss"
         />
       </div>
@@ -31,9 +43,9 @@ const FilterSidebar = ({ onFilterChange = () => {} }) => {
       <div>
         <label
           htmlFor="maxGuests"
-          className="block text-sm font-medium text-slate-700"
+          className="block text-sm font-medium text-slate-700 mb-1"
         >
-          Max Guests
+          Max Guests: {guests}
         </label>
         <input
           type="number"
@@ -41,8 +53,9 @@ const FilterSidebar = ({ onFilterChange = () => {} }) => {
           name="maxGuests"
           min="1"
           max="10"
-          onChange={handleChange}
-          className="input-base mt-1"
+          value={guests}
+          onChange={handleGuestChange}
+          className="w-full border px-3 py-2 rounded focus:outline-none focus:ring-2 focus:ring-forest"
         />
       </div>
     </aside>
