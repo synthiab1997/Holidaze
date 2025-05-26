@@ -6,7 +6,7 @@
 
 ## 🚀 Live Demo
 
-🔗 [View Deployed App on Netlify](https://your-actual-netlify-link.netlify.app)
+🔗 [View Deployed App on Netlify](https://sunny-holidaze.netlify.app/)
 
 ---
 
@@ -84,14 +84,14 @@ App.jsx # Main layout and router
 ## 🧭 Project Planning
 
 - 📌 [Kanban Board (Trello/GitHub Projects)](https://your-kanban-board-link)
-- 📅 [Gantt Chart (GitHub Roadmap/other)](https://your-gantt-chart-link)
+- 📅 [Gantt Chart (GitHub Roadmap/other)]( https://github.com/users/synthiab1997/projects/12)
 
 ---
 
 ## 🎨 Design & UI
 
-- 🎨 [Figma Style Guide](https://your-figma-style-guide-link)
-- 📱 [Figma Desktop & Mobile Designs](https://your-figma-design-prototype-link)
+- 🎨 [Figma Style Guide](https://www.figma.com/files/project/390243476)
+- 📱 [Figma Desktop & Mobile Designs](https://www.figma.com/files/project/390243476)
 
 ---
 
@@ -99,7 +99,7 @@ App.jsx # Main layout and router
 
 ```bash
 # Clone the repository
-git clone https://github.com/YOUR_USERNAME/holidaze.git
+git clone https://github.com/synthiab1997/Holidaze.git
 cd holidaze
 
 # Install dependencies
