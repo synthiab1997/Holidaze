@@ -21,11 +21,17 @@ const BookingForm = ({ venueId, onSubmit }) => {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-6 bg-white p-6 rounded-lg shadow-lg border border-stone">
+    <form
+      onSubmit={handleSubmit}
+      className="space-y-6 bg-white p-6 rounded-lg shadow-lg border border-stone"
+    >
       <h2 className="text-xl font-semibold text-forest">Book Your Stay</h2>
 
       <div>
-        <label htmlFor="checkIn" className="block text-sm font-medium text-forest">
+        <label
+          htmlFor="checkIn"
+          className="block text-sm font-medium text-forest"
+        >
           Check-In
         </label>
         <input
@@ -40,7 +46,10 @@ const BookingForm = ({ venueId, onSubmit }) => {
       </div>
 
       <div>
-        <label htmlFor="checkOut" className="block text-sm font-medium text-forest">
+        <label
+          htmlFor="checkOut"
+          className="block text-sm font-medium text-forest"
+        >
           Check-Out
         </label>
         <input
@@ -55,7 +64,10 @@ const BookingForm = ({ venueId, onSubmit }) => {
       </div>
 
       <div>
-        <label htmlFor="guests" className="block text-sm font-medium text-forest">
+        <label
+          htmlFor="guests"
+          className="block text-sm font-medium text-forest"
+        >
           Guests
         </label>
         <input
@@ -79,7 +91,6 @@ const BookingForm = ({ venueId, onSubmit }) => {
 };
 
 export default BookingForm;
-
 
 //OTHER BOOKING FORM OPTION WITH REACT CALENDAR//
 
@@ -149,4 +160,4 @@ const BookingForm = ({ onSubmit, bookedDates = [] }) => {
 };
 
 export default BookingForm;
-*/ 
+*/

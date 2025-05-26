@@ -10,7 +10,10 @@ const FilterSidebar = ({ onFilterChange = () => {} }) => {
       <h2 className="text-xl font-bold text-forest">Filter Venues</h2>
 
       <div>
-        <label htmlFor="priceRange" className="block text-sm font-medium text-slate-700">
+        <label
+          htmlFor="priceRange"
+          className="block text-sm font-medium text-slate-700"
+        >
           Price Range
         </label>
         <input
@@ -26,7 +29,10 @@ const FilterSidebar = ({ onFilterChange = () => {} }) => {
       </div>
 
       <div>
-        <label htmlFor="maxGuests" className="block text-sm font-medium text-slate-700">
+        <label
+          htmlFor="maxGuests"
+          className="block text-sm font-medium text-slate-700"
+        >
           Max Guests
         </label>
         <input

@@ -1,83 +1,86 @@
-import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { registerUser } from '../services/auth';
-import Navbar from '../components/Navbar';
-import Footer from '../components/Footer';
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { registerUser } from "../services/auth";
 
-
+import Navbar from "../components/Navbar";
+import Footer from "../components/Footer";
 
 export default function SignupPage() {
   const navigate = useNavigate();
   const [form, setForm] = useState({
-    name: '',
-    email: '',
-    password: '',
-    avatar: '',
+    name: "",
+    email: "",
+    password: "",
+    avatar: "",
     venueManager: false,
   });
-  const [error, setError] = useState('');
+  const [error, setError] = useState("");
 
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
     setForm((prev) => ({
       ...prev,
-      [name]: type === 'checkbox' ? checked : value,
+      [name]: type === "checkbox" ? checked : value,
     }));
   };
 
-  const validateEmail = (email) => email.endsWith('@stud.noroff.no');
+  const validateEmail = (email) => email.endsWith("@stud.noroff.no");
   const isValidName = (name) => /^[a-zA-Z0-9_]+$/.test(name);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setError('');
-  
+    setError("");
+
     if (!validateEmail(form.email)) {
-      setError('Only @stud.noroff.no email addresses are allowed.');
+      setError("Only @stud.noroff.no email addresses are allowed.");
       return;
     }
-  
+
     if (!isValidName(form.name)) {
-      setError('Name can only use letters, numbers, and underscores.');
+      setError("Name can only use letters, numbers, and underscores.");
       return;
     }
-  
+
     if (form.password.length < 8) {
-      setError('Password must be at least 8 characters long.');
+      setError("Password must be at least 8 characters long.");
       return;
     }
-  
-    if (form.avatar && !/^https?:\/\/.+\.(jpg|jpeg|png|webp|gif)$/i.test(form.avatar)) {
-      setError('Avatar must be a valid image URL.');
+
+    if (
+      form.avatar &&
+      !/^https?:\/\/.+\.(jpg|jpeg|png|webp|gif)$/i.test(form.avatar)
+    ) {
+      setError("Avatar must be a valid image URL.");
       return;
     }
-  
+
     try {
       const result = await registerUser(form);
-  
+
       if (!result.data || !result.data.name) {
-        throw new Error(result.errors?.[0]?.message || 'Registration failed.');
+        throw new Error(result.errors?.[0]?.message || "Registration failed.");
       }
-  
-      localStorage.setItem('user', JSON.stringify(result.data));
-  
+
+      localStorage.setItem("user", JSON.stringify(result.data));
+
       if (result.data.venueManager) {
-        navigate('/admin');
+        navigate("/admin");
       } else {
-        navigate('/profile');
+        navigate("/profile");
       }
     } catch (err) {
-      setError(err.message || 'An error occurred during registration.');
+      setError(err.message || "An error occurred during registration.");
     }
   };
-  
 
   return (
     <div className="min-h-screen bg-cream text-slate-800 flex flex-col">
       <Navbar />
       <main className="flex-grow flex items-center justify-center p-4">
-        
-        <form onSubmit={handleSubmit} className="bg-white p-6 rounded-xl shadow-md w-full max-w-md">
+        <form
+          onSubmit={handleSubmit}
+          className="bg-white p-6 rounded-xl shadow-md w-full max-w-md"
+        >
           <h1 className="text-2xl font-bold text-forestDark mb-4 text-center">
             Create Your Account
           </h1>

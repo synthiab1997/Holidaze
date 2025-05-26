@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 
 const VenueForm = ({ venue, onSubmit }) => {
   const [formData, setFormData] = useState({
-    name: venue ? venue.name : '',
-    description: venue ? venue.description : '',
+    name: venue ? venue.name : "",
+    description: venue ? venue.description : "",
     price: venue ? venue.price : 0,
     maxGuests: venue ? venue.maxGuests : 1,
   });
@@ -21,7 +21,12 @@ const VenueForm = ({ venue, onSubmit }) => {
   return (
     <form onSubmit={handleSubmit} className="space-y-4">
       <div>
-        <label htmlFor="name" className="block text-sm font-medium text-gray-700">Venue Name</label>
+        <label
+          htmlFor="name"
+          className="block text-sm font-medium text-gray-700"
+        >
+          Venue Name
+        </label>
         <input
           type="text"
           id="name"
@@ -34,7 +39,12 @@ const VenueForm = ({ venue, onSubmit }) => {
       </div>
 
       <div>
-        <label htmlFor="description" className="block text-sm font-medium text-gray-700">Description</label>
+        <label
+          htmlFor="description"
+          className="block text-sm font-medium text-gray-700"
+        >
+          Description
+        </label>
         <textarea
           id="description"
           name="description"
@@ -46,7 +56,12 @@ const VenueForm = ({ venue, onSubmit }) => {
       </div>
 
       <div>
-        <label htmlFor="price" className="block text-sm font-medium text-gray-700">Price per Night</label>
+        <label
+          htmlFor="price"
+          className="block text-sm font-medium text-gray-700"
+        >
+          Price per Night
+        </label>
         <input
           type="number"
           id="price"
@@ -59,7 +74,12 @@ const VenueForm = ({ venue, onSubmit }) => {
       </div>
 
       <div>
-        <label htmlFor="maxGuests" className="block text-sm font-medium text-gray-700">Max Guests</label>
+        <label
+          htmlFor="maxGuests"
+          className="block text-sm font-medium text-gray-700"
+        >
+          Max Guests
+        </label>
         <input
           type="number"
           id="maxGuests"
@@ -72,7 +92,12 @@ const VenueForm = ({ venue, onSubmit }) => {
         />
       </div>
 
-      <button type="submit" className="w-full py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600">Save Venue</button>
+      <button
+        type="submit"
+        className="w-full py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600"
+      >
+        Save Venue
+      </button>
     </form>
   );
 };

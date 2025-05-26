@@ -20,7 +20,6 @@ function HomePage() {
 
   const handleSearch = (query) => {
     console.log("Search:", query);
-    
   };
 
   return (
@@ -35,8 +34,12 @@ function HomePage() {
           className="w-full h-[500px] object-cover brightness-75"
         />
         <div className="absolute top-1/2 left-1/2 text-center text-white transform -translate-x-1/2 -translate-y-1/2">
-          <h1 className="text-4xl md:text-5xl font-bold mb-4">Find Your Next Adventure</h1>
-          <p className="text-lg md:text-xl mb-6">Book unique stays with nature at your doorstep</p>
+          <h1 className="text-4xl md:text-5xl font-bold mb-4">
+            Find Your Next Adventure
+          </h1>
+          <p className="text-lg md:text-xl mb-6">
+            Book unique stays with nature at your doorstep
+          </p>
           <Link
             to="/venues"
             className="bg-forestDark hover:bg-forest text-white px-6 py-3 rounded text-sm font-semibold transition"
@@ -58,7 +61,10 @@ function HomePage() {
             <AccommodationCard key={venue.id} venue={venue} />
           ))
         ) : (
-          <p className="text-center col-span-full text-slate-500">No venues found.</p>
+          <p className="text-center col-span-full text-slate-500">
+            No venues found.
+          </p>
+          
         )}
       </div>
 

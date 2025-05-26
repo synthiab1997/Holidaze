@@ -10,24 +10,34 @@ export default function Navbar() {
   };
 
   return (
-    <nav className="bg-cream text-white shadow-md"> 
+    <nav className="bg-cream text-white shadow-md">
       <div className="container-section flex justify-between items-center py-4">
         {/* Logo and Brand */}
         <Link to="/" className="flex items-center gap-2">
-  <img
-    src="/logo.png"
-    alt="Holidaze Logo"
-    className="h-14 w-14 object-contain rounded-full"
-  />
-  <span className="text-xl font-bold tracking-tight text-gold" style={{ color: '#C5A706' }}>Holidaze</span>
-</Link>
-      
+          <img
+            src="/logo.png"
+            alt="Holidaze Logo"
+            className="h-14 w-14 object-contain rounded-full"
+          />
+          <span
+            className="text-xl font-bold tracking-tight text-gold"
+            style={{ color: "#C5A706" }}
+          >
+            Holidaze
+          </span>
+        </Link>
 
         {/* Navigation Links */}
         <div className="flex items-center gap-5 text-sm font-medium">
-          <Link to="/venues" className="hover:text-moss">Venues</Link>
-          <Link to="/about" className="hover:text-moss">About</Link>
-          <Link to="/contact" className="hover:text-moss">Contact</Link>
+          <Link to="/venues" className="hover:text-moss">
+            Venues
+          </Link>
+          <Link to="/about" className="hover:text-moss">
+            About
+          </Link>
+          <Link to="/contact" className="hover:text-moss">
+            Contact
+          </Link>
 
           {user ? (
             <>
@@ -46,8 +56,12 @@ export default function Navbar() {
             </>
           ) : (
             <>
-              <Link to="/login" className="hover:text-moss">Login</Link>
-              <Link to="/signup" className="hover:text-moss">Sign Up</Link>
+              <Link to="/login" className="hover:text-moss">
+                Login
+              </Link>
+              <Link to="/signup" className="hover:text-moss">
+                Sign Up
+              </Link>
             </>
           )}
 

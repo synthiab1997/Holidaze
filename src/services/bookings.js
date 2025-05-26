@@ -1,13 +1,12 @@
-
-import api from './api';
+import api from "./api";
 
 export const createBooking = async (booking) => {
-  const response = await api.post('/bookings', booking);
+  const response = await api.post("/bookings", booking);
   return response.data.data;
 };
 
 export const fetchUserBookings = async () => {
-  const response = await api.get('/profiles/me/bookings');
+  const response = await api.get("/profiles/me/bookings");
   return response.data.data;
 };
 

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import VenueForm from "../components/VenueForm";
 import { fetchVenueById, updateVenue } from "../services/venues";
 
@@ -22,7 +22,15 @@ const EditVenuePage = () => {
 
   return (
     <div className="max-w-4xl mx-auto p-6 bg-white mt-8 shadow-md rounded-xl border border-stone">
-      <h1 className="text-2xl font-bold text-forest mb-4">Edit Venue</h1>
+      <div className="flex justify-between items-center mb-4">
+        <h1 className="text-2xl font-bold text-forest">Edit Venue</h1>
+        <Link
+          to="/admin"
+          className="text-sm text-sky-600 hover:underline font-medium"
+        >
+          ← Back to Dashboard
+        </Link>
+      </div>
       {venue && <VenueForm venue={venue} onSubmit={handleUpdate} />}
     </div>
   );

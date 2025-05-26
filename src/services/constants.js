@@ -1,6 +1,5 @@
-export const API_BASE = 'https://v2.api.noroff.dev';
-export const API_KEY = "4bd72ed3-6ff2-4433-9cc9-f9695c6ed25d"; 
-
+export const API_BASE = "https://v2.api.noroff.dev";
+export const API_KEY = "4bd72ed3-6ff2-4433-9cc9-f9695c6ed25d";
 
 // 🔐 Authentication Endpoints
 export const API_AUTH = `${API_BASE}/auth`;
@@ -20,5 +19,6 @@ export const API_BOOKING_BY_ID = (id) => `${API_BOOKINGS}/${id}`;
 // 👤 Profile Endpoints
 export const API_PROFILES = `${API_BASE}/holidaze/profiles`;
 export const API_PROFILE_BY_NAME = (name) => `${API_PROFILES}/${name}`;
-export const API_PROFILE_BOOKINGS = (name) => `${API_PROFILES}/${name}/bookings`;
+export const API_PROFILE_BOOKINGS = (name) =>
+  `${API_PROFILES}/${name}/bookings`;
 export const API_PROFILE_VENUES = (name) => `${API_PROFILES}/${name}/venues`;

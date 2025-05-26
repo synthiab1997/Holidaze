@@ -11,9 +11,15 @@ export default function LoginPage() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError("");
-
+  
     try {
-      const user = await loginUser(email, password);
+      const result = await loginUser(email.trim(), password.trim());
+  
+      // Extract the user object from the response
+      const user = result.data;
+  
+      console.log("✅ Login response user object:", user);
+  
       if (user && user.accessToken) {
         localStorage.setItem("user", JSON.stringify(user));
         const isManager = user.venueManager;
@@ -21,15 +27,22 @@ export default function LoginPage() {
       } else {
         setError("Invalid credentials.");
       }
-    } catch {
-      setError("Login failed. Please try again.");
+    } catch (err) {
+      setError(err.message || "Login failed. Please try again.");
+      console.error("Login error:", err);
     }
   };
+  
 
   return (
     <div className="min-h-screen bg-cream flex items-center justify-center px-4">
-      <form onSubmit={handleSubmit} className="bg-white p-6 rounded-xl shadow-md w-full max-w-md space-y-4">
-        <h1 className="text-3xl font-bold text-forest text-center">Login to Holidaze</h1>
+      <form
+        onSubmit={handleSubmit}
+        className="bg-white p-6 rounded-xl shadow-md w-full max-w-md space-y-4"
+      >
+        <h1 className="text-3xl font-bold text-forest text-center">
+          Login to Holidaze
+        </h1>
         {error && <p className="text-red-600 text-sm text-center">{error}</p>}
         <input
           type="email"

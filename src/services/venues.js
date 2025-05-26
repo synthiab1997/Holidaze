@@ -1,9 +1,9 @@
 // services/venues.js
-import api from './api'; // Axios instance with auth token
+import api from "./api"; // Axios instance with auth token
 
 // Fetch all venues with optional filters (e.g., ?maxGuests=4)
 export const fetchVenues = async (filters = {}) => {
-  const response = await api.get('/venues', { params: filters });
+  const response = await api.get("/venues", { params: filters });
   return response.data.data;
 };
 
@@ -15,7 +15,7 @@ export const fetchVenueById = async (id) => {
 
 // Create a new venue (auth required)
 export const createVenue = async (venueData) => {
-  const response = await api.post('/venues', venueData);
+  const response = await api.post("/venues", venueData);
   return response.data.data;
 };
 
@@ -33,6 +33,6 @@ export const deleteVenue = async (id) => {
 
 // Fetch venues owned by the current user (auth required)
 export const fetchUserVenues = async () => {
-  const response = await api.get('/venues/owner');
+  const response = await api.get("/venues/owner");
   return response.data.data;
 };

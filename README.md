@@ -24,6 +24,7 @@ Holidaze is a full-stack venue booking web application where users can explore, 
 ## ✨ Features
 
 ### Users (Guests)
+
 - Browse and search available venues
 - View accommodation details
 - Book venues by date and number of guests
@@ -31,6 +32,7 @@ Holidaze is a full-stack venue booking web application where users can explore, 
 - View profile and bookings
 
 ### Venue Managers
+
 - Register as a Venue Manager
 - Add/edit/delete venues
 - View bookings for owned venues (Admin dashboard)
@@ -53,3 +55,4 @@ git clone https://github.com/YOUR_USERNAME/holidaze.git
 cd holidaze
 npm install
 npm run dev
+```

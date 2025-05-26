@@ -13,7 +13,7 @@ import UserProfilePage from "./pages/UserProfilePage.jsx";
 import AdminDashboardPage from "./pages/AdminDashboardPage.jsx";
 import EditVenuePage from "./pages/EditVenuePage.jsx";
 import PageNotFound from "./pages/PageNotFound.jsx";
-
+import CreateVenuePage from "./pages/CreateVenuePage.jsx";
 import ProtectedRoute from "./components/ProtectedRoute.jsx";
 
 function App() {
@@ -23,7 +23,10 @@ function App() {
       <Route path="/venues" element={<AccommodationListPage />} />
       <Route path="/venues/:id" element={<AccommodationDetails />} />
       <Route path="/booking/:id" element={<BookingPage />} />
-      <Route path="/booking-confirmation" element={<BookingConfirmationPage />} />
+      <Route
+        path="/booking-confirmation"
+        element={<BookingConfirmationPage />}
+      />
       <Route path="/login" element={<LoginPage />} />
       <Route path="/signup" element={<SignupPage />} />
       <Route path="/about" element={<AboutPage />} />
@@ -51,6 +54,14 @@ function App() {
         element={
           <ProtectedRoute requireManager>
             <EditVenuePage />
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path="/create-venue"
+        element={
+          <ProtectedRoute requireManager>
+            <CreateVenuePage />
           </ProtectedRoute>
         }
       />
