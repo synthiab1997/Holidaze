@@ -13,9 +13,9 @@ export default function Navbar() {
     <nav className="bg-cream text-white shadow-md">
       <div className="container-section flex justify-between items-center py-4">
         {/* Logo and Brand */}
-        <Link to="/" className="flex items-center gap-2">
+        <Link to="src/assets/logo.png" className="flex items-center gap-2">
           <img
-            src="/logo.png"
+            src="src/assets/logo.png"
             alt="Holidaze Logo"
             className="h-14 w-14 object-contain rounded-full"
           />

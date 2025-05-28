@@ -26,7 +26,7 @@ function HomePage() {
       {/* Hero Section */}
       <section className="relative">
         <img
-          src="/public/drew-dau-GEdoSfYHsPs-unsplash.jpg"
+          src="src/assets/drew-dau-GEdoSfYHsPs-unsplash.jpg"
           alt="Scenic Vacation"
           className="w-full h-[500px] object-cover brightness-75"
         />
