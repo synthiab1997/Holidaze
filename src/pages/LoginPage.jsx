@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { loginUser } from "../services/auth";
+import Navbar from "../components/Navbar";
 
 
 export default function LoginPage() {

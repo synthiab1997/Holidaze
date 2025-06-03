@@ -1,27 +1,31 @@
-import React from "react";
+import React, { useState } from "react";
 
-function SearchBar({ onSearch }) {
+export default function SearchBar({ onSearch }) {
+  const [query, setQuery] = useState("");
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    onSearch(query);
+  };
+
   return (
     <form
-      onSubmit={(e) => e.preventDefault()}
-      className="bg-white shadow-md p-4 rounded-lg max-w-xl mx-auto -mt-12 relative z-10"
+      onSubmit={handleSubmit}
+      className="flex bg-white rounded-lg shadow-md overflow-hidden"
     >
-      <div className="flex">
-        <input
-          type="text"
-          placeholder="Search venues..."
-          onChange={(e) => (onSearch ? onSearch(e.target.value) : null)}
-          className="flex-grow px-4 py-2 rounded-l-lg border border-stone focus:outline-none focus:ring-2 focus:ring-sky"
-        />
-        <button
-          type="submit"
-          className="bg-forestDark text-white px-6 py-2 rounded-r-lg hover:bg-moss transition"
-        >
-          Search
-        </button>
-      </div>
+      <input
+        type="text"
+        placeholder="Search destinations..."
+        value={query}
+        onChange={(e) => setQuery(e.target.value)}
+        className="flex-grow px-4 py-2 text-slate-800 focus:outline-none"
+      />
+      <button
+        type="submit"
+        className="bg-forestDark text-white px-4 py-2 hover:bg-yellow-400 transition font-semibold"
+      >
+        Search
+      </button>
     </form>
   );
 }
-
-export default SearchBar;

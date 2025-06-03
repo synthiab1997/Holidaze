@@ -73,24 +73,54 @@ const VenueForm = ({ venue, onSubmit }) => {
         />
       </div>
 
-      <div>
-        <label
-          htmlFor="maxGuests"
-          className="block text-sm font-medium text-gray-700"
-        >
-          Max Guests
-        </label>
-        <input
-          type="number"
-          id="maxGuests"
-          name="maxGuests"
-          value={formData.maxGuests}
-          onChange={handleChange}
-          min="1"
-          required
-          className="mt-1 block w-full p-2 border border-gray-300 rounded-md"
-        />
-      </div>
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-4">
+  <label className="text-sm">
+    Max Guests
+    <input
+      type="number"
+      name="maxGuests"
+      value={form.maxGuests}
+      onChange={handleChange}
+      className="input-base mt-1"
+      required
+    />
+  </label>
+
+  <label className="text-sm">
+    Rating
+    <input
+      type="number"
+      step="0.1"
+      max="5"
+      min="1"
+      name="rating"
+      value={form.rating}
+      onChange={handleChange}
+      className="input-base mt-1"
+    />
+  </label>
+
+  <label className="text-sm flex items-center gap-2">
+    <input type="checkbox" name="wifi" checked={form.wifi} onChange={handleChange} />
+    Wi-Fi Available
+  </label>
+
+  <label className="text-sm flex items-center gap-2">
+    <input type="checkbox" name="breakfast" checked={form.breakfast} onChange={handleChange} />
+    Breakfast Included
+  </label>
+
+  <label className="text-sm flex items-center gap-2">
+    <input type="checkbox" name="petsAllowed" checked={form.petsAllowed} onChange={handleChange} />
+    Pets Allowed
+  </label>
+
+  <label className="text-sm flex items-center gap-2">
+    <input type="checkbox" name="kidsAllowed" checked={form.kidsAllowed} onChange={handleChange} />
+    Kids Allowed
+  </label>
+</div>
+
 
       <button
         type="submit"
