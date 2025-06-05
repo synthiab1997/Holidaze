@@ -1,7 +1,10 @@
+// ✅ UserProfilePage.jsx (updated with Navbar + optional admin link)
 import React, { useState, useEffect } from "react";
 import { fetchUserProfile, updateUserProfile } from "../services/profiles";
 import BookingList from "../components/BookingList";
-import AvatarPreview from "../components/AvatarPreview";
+import AvatarEditor from "../components/AvatarEditor";
+import ProfileCard from "../components/ProfileCard";
+import Navbar from "../components/Navbar";
 
 const UserProfilePage = () => {
   const [user, setUser] = useState(null);
@@ -48,46 +51,36 @@ const UserProfilePage = () => {
   if (!user) return <div className="p-6 text-slate-600">Loading profile...</div>;
 
   return (
-    <div className="p-6 max-w-4xl mx-auto bg-white rounded-xl shadow-md border border-stone">
-      <h1 className="text-3xl font-bold text-forest mb-4">
-        Welcome, {user.name}
-      </h1>
-
-      <div className="flex items-center space-x-4 mb-4">
-        <AvatarPreview url={user.avatar?.url} />
-        <div>
-          <p className="text-slate-700">Email: {user.email}</p>
-          <p className="text-sm text-stone">
-            Role: {user.venueManager ? "Venue Manager" : "Customer"}
-          </p>
+    <div className="min-h-screen bg-cream">
+      <Navbar />
+      <div className="p-6 max-w-5xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div className="col-span-1">
+            <ProfileCard user={user} />
+            <AvatarEditor
+              avatarUrl={avatarUrl}
+              setAvatarUrl={setAvatarUrl}
+              onSave={handleAvatarUpdate}
+              loading={updating}
+              message={message}
+            />
+            {user.venueManager && (
+              <div className="mt-4">
+                <a
+                  href="/admin"
+                  className="inline-block bg-sky text-white font-medium px-4 py-2 rounded-md hover:bg-forestDark"
+                >
+                  🛠 Go to Admin Dashboard
+                </a>
+              </div>
+            )}
+          </div>
+          <div className="col-span-2">
+            <h2 className="text-xl font-semibold text-forest mb-2">Upcoming Bookings</h2>
+            <BookingList bookings={user.bookings || []} />
+          </div>
         </div>
       </div>
-
-      {/* ✅ Avatar Update Form */}
-      <div className="mb-6">
-        <label htmlFor="avatar" className="block text-sm font-medium text-slate-700 mb-1">
-          Update Avatar URL
-        </label>
-        <input
-          type="url"
-          id="avatar"
-          value={avatarUrl}
-          onChange={(e) => setAvatarUrl(e.target.value)}
-          placeholder="https://example.com/image.jpg"
-          className="input-base"
-        />
-        <button
-          onClick={handleAvatarUpdate}
-          disabled={updating}
-          className="btn-primary mt-2"
-        >
-          {updating ? "Updating..." : "Save Avatar"}
-        </button>
-        {message && <p className="text-sm mt-2 text-moss">{message}</p>}
-      </div>
-
-      <h2 className="text-xl font-semibold text-moss mb-2">Upcoming Bookings</h2>
-      <BookingList bookings={user.bookings || []} />
     </div>
   );
 };

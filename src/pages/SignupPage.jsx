@@ -123,16 +123,37 @@ export default function SignupPage() {
             className="input-base mb-3"
           />
 
-          <label className="flex items-center space-x-2 mb-4 text-sm">
-            <input
-              type="checkbox"
-              name="venueManager"
-              checked={form.venueManager}
-              onChange={handleChange}
-              className="accent-forestDark"
-            />
-            <span>Register as Venue Manager</span>
+          <label className="block text-sm font-medium text-slate-700 mb-1">
+            Register as
           </label>
+          <div className="flex justify-between items-center mb-4 bg-slate-100 rounded-md p-1">
+            <button
+              type="button"
+              className={`flex-1 text-center py-2 rounded-md transition font-medium ${
+                !form.venueManager
+                  ? "bg-forestDark text-white"
+                  : "bg-transparent text-forestDark hover:bg-forestLight"
+              }`}
+              onClick={() =>
+                setForm((prev) => ({ ...prev, venueManager: false }))
+              }
+            >
+              Customer
+            </button>
+            <button
+              type="button"
+              className={`flex-1 text-center py-2 rounded-md transition font-medium ${
+                form.venueManager
+                  ? "bg-forestDark text-white"
+                  : "bg-transparent text-forestDark hover:bg-forestLight"
+              }`}
+              onClick={() =>
+                setForm((prev) => ({ ...prev, venueManager: true }))
+              }
+            >
+              Venue Manager
+            </button>
+          </div>
 
           {error && <p className="text-red-600 mb-3">{error}</p>}
 

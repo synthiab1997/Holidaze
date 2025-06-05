@@ -5,7 +5,7 @@ const api = axios.create({
   baseURL: "https://v2.api.noroff.dev/holidaze",
   headers: {
     "Content-Type": "application/json",
-    ...(API_KEY && { "X-API-Key": API_KEY }), 
+    ...(API_KEY && { "X-Noroff-API-Key": API_KEY }), 
   },
 });
 
