@@ -31,44 +31,36 @@ export default function SignupPage() {
     setError("");
 
     if (!validateEmail(form.email)) {
-      setError("Only @stud.noroff.no email addresses are allowed.");
-      return;
+      return setError("Only @stud.noroff.no email addresses are allowed.");
     }
 
     if (!isValidName(form.name)) {
-      setError("Name can only use letters, numbers, and underscores.");
-      return;
+      return setError("Username can only include letters, numbers, and underscores.");
     }
 
     if (form.password.length < 8) {
-      setError("Password must be at least 8 characters long.");
-      return;
+      return setError("Password must be at least 8 characters long.");
     }
 
     if (
       form.avatar &&
       !/^https?:\/\/.+\.(jpg|jpeg|png|webp|gif)$/i.test(form.avatar)
     ) {
-      setError("Avatar must be a valid image URL.");
-      return;
+      return setError("Avatar must be a valid image URL.");
     }
 
     try {
       const result = await registerUser(form);
+      const user = result.data;
 
-      if (!result.data || !result.data.name) {
-        throw new Error(result.errors?.[0]?.message || "Registration failed.");
+      if (!user || !user.name) {
+        throw new Error("Registration failed.");
       }
 
-      localStorage.setItem("user", JSON.stringify(result.data));
-
-      if (result.data.venueManager) {
-        navigate("/admin");
-      } else {
-        navigate("/profile");
-      }
+      localStorage.setItem("user", JSON.stringify(user));
+      navigate(user.venueManager ? "/dashboard" : "/profile");
     } catch (err) {
-      setError(err.message || "An error occurred during registration.");
+      setError(err.message || "Registration failed.");
     }
   };
 

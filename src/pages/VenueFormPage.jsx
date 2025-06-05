@@ -1,29 +1,30 @@
 import React, { useEffect, useState } from "react";
-import { useParams, useNavigate, Link } from "react-router-dom";
+import { useNavigate, useParams, Link } from "react-router-dom";
+import { createVenue, fetchVenueById, updateVenue } from "../services/venues";
 import VenueForm from "../components/VenueForm";
-import { fetchVenueById, createVenue, updateVenue } from "../services/venues";
 import Navbar from "../components/Navbar";
 
 export default function VenueFormPage() {
   const { id } = useParams();
   const navigate = useNavigate();
-  const isEditMode = Boolean(id);
   const [venue, setVenue] = useState(null);
-  const [loading, setLoading] = useState(isEditMode);
+  const [loading, setLoading] = useState(false);
+  const isEditMode = Boolean(id);
 
   useEffect(() => {
     if (isEditMode) {
-      const getVenue = async () => {
+      const loadVenue = async () => {
+        setLoading(true);
         try {
           const data = await fetchVenueById(id);
           setVenue(data);
         } catch (err) {
-          console.error("Failed to fetch venue for editing:", err);
+          console.error("❌ Failed to fetch venue:", err);
         } finally {
           setLoading(false);
         }
       };
-      getVenue();
+      loadVenue();
     }
   }, [id, isEditMode]);
 
@@ -31,37 +32,36 @@ export default function VenueFormPage() {
     try {
       if (isEditMode) {
         await updateVenue(id, formData);
-        alert("✅ Venue updated!");
+        alert("✅ Venue updated successfully!");
       } else {
         await createVenue(formData);
-        alert("✅ Venue created!");
+        alert("✅ Venue created successfully!");
       }
-      navigate("/admin");
+      navigate("/dashboard");
     } catch (err) {
-      console.error("Venue submission failed:", err);
-      alert("❌ Something went wrong.");
+      console.error("❌ Venue submission failed:", err);
     }
   };
 
   return (
     <div className="min-h-screen bg-cream">
       <Navbar />
-      <div className="max-w-4xl mx-auto p-6 mt-8 bg-white rounded-xl shadow-md border border-stone space-y-4">
+      <main className="max-w-4xl mx-auto p-6 bg-white mt-8 rounded-xl shadow-md border border-stone space-y-4">
         <div className="flex justify-between items-center">
           <h1 className="text-2xl font-bold text-forest">
             {isEditMode ? "Edit Venue" : "Create New Venue"}
           </h1>
-          <Link to="/admin" className="text-sm text-forest hover:underline">
+          <Link to="/dashboard" className="text-sm text-forest hover:underline">
             ← Back to Dashboard
           </Link>
         </div>
 
-        {loading && isEditMode ? (
-          <p className="text-slate-600">Loading venue...</p>
+        {loading ? (
+          <p className="text-slate-500">Loading venue data...</p>
         ) : (
           <VenueForm venue={venue} onSubmit={handleSubmit} />
         )}
-      </div>
+      </main>
     </div>
   );
 }

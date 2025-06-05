@@ -19,12 +19,12 @@ export default function LoginPage() {
 
       if (user && user.accessToken) {
         localStorage.setItem("user", JSON.stringify(user));
-        navigate(user.venueManager ? "/admin" : "/profile");
+        navigate(user.venueManager ? "/dashboard" : "/profile");
       } else {
         setError("Invalid credentials.");
       }
     } catch (err) {
-      setError(err.message || "Login failed. Please try again.");
+      setError(err.message || "Login failed.");
       console.error("Login error:", err);
     }
   };

@@ -1,4 +1,4 @@
-// ✅ UserProfilePage.jsx (updated with Navbar + optional admin link)
+
 import React, { useState, useEffect } from "react";
 import { fetchUserProfile, updateUserProfile } from "../services/profiles";
 import BookingList from "../components/BookingList";
@@ -67,7 +67,7 @@ const UserProfilePage = () => {
             {user.venueManager && (
               <div className="mt-4">
                 <a
-                  href="/admin"
+                  href="/dashboard"
                   className="inline-block bg-sky text-white font-medium px-4 py-2 rounded-md hover:bg-forestDark"
                 >
                   🛠 Go to Admin Dashboard

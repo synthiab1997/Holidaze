@@ -25,7 +25,7 @@ const FilterSidebar = ({ onFilterChange = () => {} }) => {
           htmlFor="priceRange"
           className="block text-sm font-medium text-slate-700 mb-1"
         >
-          Price Range: ${price}
+          Price Range: NOK{price}
         </label>
         <input
           type="range"

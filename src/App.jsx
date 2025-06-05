@@ -10,12 +10,11 @@ import LoginPage from "./pages/LoginPage.jsx";
 import SignupPage from "./pages/SignupPage.jsx";
 import AboutPage from "./pages/AboutPage.jsx";
 import ContactPage from "./pages/ContactPage.jsx";
-import CreateVenuePage from "./pages/CreateVenuePage.jsx";
-import EditVenuePage from "./pages/EditVenuePage.jsx";
+import VenueFormPage from "./pages/VenueFormPage.jsx"; 
 import PageNotFound from "./pages/PageNotFound.jsx";
 
 import ProtectedRoute from "./components/ProtectedRoute.jsx";
-import UserDashboardPage from "./pages/UserDashboardPage.jsx"; // ✅ NEW COMBINED PAGE
+import UserDashboardPage from "./pages/UserDashboardPage.jsx"; 
 
 function App() {
   return (
@@ -57,20 +56,20 @@ function App() {
         }
       />
 
-      {/* ✅ Venue Create/Edit (still protected) */}
+      {/* ✅ Unified Venue Form Route */}
       <Route
-        path="/create-venue"
+        path="/venue-form"
         element={
           <ProtectedRoute>
-            <CreateVenuePage />
+            <VenueFormPage />
           </ProtectedRoute>
         }
       />
       <Route
-        path="/edit-venue/:id"
+        path="/venue-form/:id"
         element={
           <ProtectedRoute>
-            <EditVenuePage />
+            <VenueFormPage />
           </ProtectedRoute>
         }
       />
